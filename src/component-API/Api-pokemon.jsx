@@ -16,11 +16,6 @@ const PokemonApi = () => {
                 let pokemonRandomIndex = res.data[0].titles[RandomNumber];
                 let titlePokemon = pokemonRandomIndex.title;
                 setFirstWordTitle(titlePokemon.trim().split(' ')[0]);
-
-                // Iterar sobre cada carácter de la palabra
-                // for (let i = 0; i < firstWordTitle.length; i++) {
-                //     setLetterCounter(incremento => incremento +1);
-                // }
             })
             .catch(error => console.error('Error al realizar la solicitud', error))
     }, [])
