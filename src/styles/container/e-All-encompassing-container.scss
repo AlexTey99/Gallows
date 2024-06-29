@@ -7,5 +7,29 @@
     z-index: 2;
     height: 95%;
     width: 70%;
+
+    .keyboard{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(60px, 2fr));
+        align-items: center;
+        margin-top: 20px;
+        height: 22%;
+        width: 90%;
+        padding-left: 6px;
+        opacity: 0.8;
+        background: black;
+
+        .keyboardDivs{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            height: 40px;
+            width: 50px;
+            background: white;
+            margin: 2px;
+            cursor: pointer;
+        }
+    }
     
 }
