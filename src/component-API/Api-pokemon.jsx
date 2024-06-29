@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+// src/component-API/Api-pokemon.jsx
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setLetterCounter, setFirstWordTitle } from "../Redux/actions";
 
 const PokemonApi = () => {
     const [pokemon, setPokemon] = useState([]);
-    const [firstWordTitle, setFirstWordTitle] = useState('');// Palabra de tittulo
-    const [letterCounter, setLetterCounter] = useState(0);
-    
+    const dispatch = useDispatch();
 
     // Fetch que retorna un título aleatorio
     useEffect(() => {
@@ -15,18 +16,15 @@ const PokemonApi = () => {
                 let RandomNumber = Math.floor(Math.random() * res.data[0].titles.length);
                 let pokemonRandomIndex = res.data[0].titles[RandomNumber];
                 let titlePokemon = pokemonRandomIndex.title;
-                setFirstWordTitle(titlePokemon.trim().split(' ')[0]);
+                let firstWordTitle = titlePokemon.trim().split(' ')[0];
+                let endResult = firstWordTitle;
+                dispatch(setFirstWordTitle(endResult));
+                dispatch(setLetterCounter(firstWordTitle.length));
             })
-            .catch(error => console.error('Error al realizar la solicitud', error))
-    }, [])
+            .catch(error => console.error('Error al realizar la solicitud', error));
+    }, [dispatch]);
 
-    useEffect(() => {
-        if (firstWordTitle) {
-            setLetterCounter(firstWordTitle.length);
-        }
-        console.log(firstWordTitle);
-        console.log(letterCounter);
-    }, [firstWordTitle]);
-}
+    return null;
+};
 
-export { PokemonApi }
+export { PokemonApi };
