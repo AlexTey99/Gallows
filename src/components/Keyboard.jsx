@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-const Keyboard = () => {
+const Keyboard = ({onLetterClick}) => {
     const [keyboard, setKeyboard] = useState([]);
 
     useEffect(() => {
         const divsKeyboard = [];
         for (let i = 0; i <= 25; i++) {
             const letter = String.fromCharCode(97 + i);
-            divsKeyboard.push(<div className="keyboardDivs" key={i}>{letter}</div>);
+            divsKeyboard.push(<div className="keyboardDivs" onClick={()=> onLetterClick(letter)} key={i}>{letter}</div>);
         }
         setKeyboard(divsKeyboard);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); // Dependencia vacía para ejecutarse solo una vez al montar el componente
+    }, [onLetterClick]);
 
     return (
         <div className="keyboard">

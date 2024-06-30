@@ -7,12 +7,19 @@ import { Keyboard } from "../components/Keyboard";
 
 
 const AllEncompassingContainer = () => {
+
+    const [guessedLetters, setGuessedLetters] = useState([]);
+
+    const handleLetterClick = (letter) => {
+        setGuessedLetters([...guessedLetters, letter]);
+    };
+
     return (
         <div className="all-encompassing-container">
-            <Header/>
-            <PokemonApi/>
-            <DivContainerToFill/>
-            <Keyboard/>
+            <Header />
+            <PokemonApi />
+            <DivContainerToFill guessedLetters={guessedLetters} />
+            <Keyboard onLetterClick={handleLetterClick} />
         </div>
     )
 }
