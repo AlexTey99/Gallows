@@ -17,7 +17,7 @@ const PokemonApi = () => {
                 let pokemonRandomIndex = res.data[0].titles[RandomNumber];
                 let titlePokemon = pokemonRandomIndex.title;
                 let firstWordTitle = titlePokemon.trim().split(' ')[0];
-                let endResult = firstWordTitle;
+                let endResult = firstWordTitle.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");// Combierte el string en minuscula y le quita los caracteres especiales
                 dispatch(setFirstWordTitle(endResult));
                 dispatch(setLetterCounter(firstWordTitle.length));
             })
