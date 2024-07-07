@@ -18,12 +18,19 @@
 
     .life-bar{
         display: flex;
-        height: 20px;
+        align-items: center;
         height: 14px;
         width: 120px;
         margin-left: auto;
         border-radius: 30px;
         background: white;
+
+        .resizableDiv{
+            height: 5px;
+            background: black;
+            border-radius: 5px;
+            transition: width 0.5s, height 0.5s;
+        }
 
         .FaHeartCrack{
             position: relative;

@@ -1,10 +1,11 @@
 
 import { createReducer } from '@reduxjs/toolkit';
-import { setLetterCounter, setFirstWordTitle } from './actions';
+import { setLetterCounter, setFirstWordTitle, resizableDiv } from './actions';
 
 const initialState = {
     contador: 0,
-    firstWordTitle: ''
+    firstWordTitle: '',
+    ancho: 90
 };
 
 const counterReducer = createReducer(initialState, (builder) => {
@@ -14,7 +15,11 @@ const counterReducer = createReducer(initialState, (builder) => {
         })
         .addCase(setFirstWordTitle, (state, action) => {
             state.firstWordTitle = action.payload;
-        });
+        })
+        .addCase(resizableDiv, (state, action) => {
+            state.ancho = action.payload;
+        })
+        
 });
 
 export default counterReducer;
