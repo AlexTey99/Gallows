@@ -5,7 +5,7 @@
     align-items: center;
     height: 12%;
     width: 100%;
-    padding: 20px 40px 20px 20px;
+    padding: 20px 14px 20px 20px;
     border-radius: 20px;
     color: white;
     opacity: 0.8;
@@ -22,6 +22,7 @@
         height: 14px;
         width: 120px;
         margin-left: auto;
+        padding: 0px 0px 0px 16px;
         border-radius: 30px;
         background: white;
 
@@ -32,10 +33,30 @@
             transition: width 0.5s, height 0.5s;
         }
 
+        
+    }
+
+    .containerHearts{
+        margin-left: 6px;
+
+        .FaHeart{
+            position: relative;
+            top: 0;
+            right: 0;
+        }   
+
         .FaHeartCrack{
             position: relative;
-            top: 0px;
-            right: -126px;
+            top: 0;
+            right: 0;
+        }
+
+        .displayFlex{
+            display: flex;
+        }
+
+        .displayNone{
+            display: none;
         }
     }
 }

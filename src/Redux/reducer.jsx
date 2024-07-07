@@ -5,7 +5,7 @@ import { setLetterCounter, setFirstWordTitle, resizableDiv } from './actions';
 const initialState = {
     contador: 0,
     firstWordTitle: '',
-    ancho: 90
+    width: 90
 };
 
 const counterReducer = createReducer(initialState, (builder) => {
@@ -17,7 +17,7 @@ const counterReducer = createReducer(initialState, (builder) => {
             state.firstWordTitle = action.payload;
         })
         .addCase(resizableDiv, (state, action) => {
-            state.ancho = action.payload;
+            state.width = action.payload;
         })
         
 });
