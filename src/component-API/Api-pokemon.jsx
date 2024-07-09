@@ -1,23 +1,40 @@
 // src/component-API/Api-pokemon.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setLetterCounter, setFirstWordTitle } from "../Redux/actions";
 
 const PokemonApi = () => {
-    const [pokemon, setPokemon] = useState([]);
     const dispatch = useDispatch();
 
-    // Fetch que retorna un título aleatorio
+    // Fetch que retorna un título en secuencia
     useEffect(() => {
         fetch('https://api.jikan.moe/v4/anime?q=pokemon&sfw')
             .then(res => res.json())
             .then(res => {
-                setPokemon(res.data[0].titles);
-                let RandomNumber = Math.floor(Math.random() * res.data[0].titles.length);
-                let pokemonRandomIndex = res.data[0].titles[RandomNumber];
-                let titlePokemon = pokemonRandomIndex.title;
-                let firstWordTitle = titlePokemon.trim().split(' ')[0];
-                let endResult = firstWordTitle.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");// Combierte el string en minuscula y le quita los caracteres especiales
+                const titles = res.data[0].titles;
+                
+                // Obtener el índice actual de localStorage o inicializarlo en 0
+                let currentIndex = localStorage.getItem('currentIndex');
+                if (currentIndex === null) {
+                    currentIndex = 0;
+                }else if(currentIndex > 6){
+                    currentIndex = 0;
+                } else {
+                    currentIndex = parseInt(currentIndex, 10);
+                }
+
+                // Obtener el título correspondiente al índice actual
+                const pokemonRandomTitle = titles[currentIndex].title;
+
+                // Incrementar el índice y actualizarlo en localStorage
+                currentIndex = (currentIndex + 1) % titles.length;
+                localStorage.setItem('currentIndex', currentIndex);
+
+                // Procesar el título
+                const firstWordTitle = pokemonRandomTitle.trim().split(' ')[0];
+                const endResult = firstWordTitle.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""); // Convierte el string en minúscula y le quita los caracteres especiales
+                console.log(endResult);
+
                 dispatch(setFirstWordTitle(endResult));
                 dispatch(setLetterCounter(firstWordTitle.length));
             })
@@ -25,6 +42,6 @@ const PokemonApi = () => {
     }, [dispatch]);
 
     return null;
-};
+}
 
 export { PokemonApi };

@@ -5,9 +5,13 @@ import { FaHeart } from "react-icons/fa";
 
 const Header = () => {
     const barDivwidth = useSelector(state => state.counter.width);
-    console.log(barDivwidth);
-    
 
+    setTimeout(()=>{
+        if(barDivwidth === 0){
+            alert('GAME OVER!')
+        }
+    },500)
+    
     return(
         <div className="header">
             <FaHouseChimney className="FaHouseChimney"/>
