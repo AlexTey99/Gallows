@@ -23,15 +23,11 @@ const DivContainerToFill = ({ guessedLetters }) => {
         for (let i = 0; i < firstWordTitle.length; i++) {
             if (firstWordTitle[i] === ' ') {
                 newDivs.push(
-                    <div className="spaceDiv" key={`${i}-space`} style={{ marginRight: '5px' }}>
-                        {/* Espacio visual */}
-                    </div>
+                    <div className="spaceDiv" key={`${i}-space`} style={{ marginRight: '5px' }}></div>
                 );
             } else {
                 newDivs.push(
-                    <div className="separateDivs" key={i}>
-                        {/* Aquí puedes agregar contenido al div si lo deseas */}
-                    </div>
+                    <div className="separateDivs" key={i}></div>
                 );
             }
         }
@@ -46,7 +42,6 @@ const DivContainerToFill = ({ guessedLetters }) => {
                 if (firstWordTitle[i] === ' ') {
                     newDivs.push(
                         <div className="spaceDiv" key={`${i}-space`} style={{ marginRight: '5px' }}>
-                            {/* Espacio visual */}
                         </div>
                     );
                 } else {

@@ -12,7 +12,6 @@ const PokemonApi = () => {
             .then(res => res.json())
             .then(res => {
                 const titles = res.data[0].titles;
-                console.log(titles);
                 
                 // Obtener el índice actual de localStorage o inicializarlo en 0
                 let currentIndex = localStorage.getItem('currentIndex');
@@ -36,7 +35,6 @@ const PokemonApi = () => {
                 .toLowerCase()
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, "")
-                //.replace(/\s/g, "");
  
                 console.log(endResult);
 

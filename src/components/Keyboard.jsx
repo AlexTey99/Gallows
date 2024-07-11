@@ -10,7 +10,6 @@ const Keyboard = ({onLetterClick}) => {
             divsKeyboard.push(<div className="keyboardDivs" onClick={()=> onLetterClick(letter)} key={i}>{letter}</div>);
         }
         setKeyboard(divsKeyboard);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [onLetterClick]);
 
     return (
