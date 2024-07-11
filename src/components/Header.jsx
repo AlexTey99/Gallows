@@ -15,7 +15,7 @@ const Header = () => {
     return(
         <div className="header">
             <FaHouseChimney className="FaHouseChimney"/>
-            <h1>Pokemon</h1>
+            <h1>Tittles Pokemon</h1>
             <div className="life-bar">
                 <div id="resizableDiv" className="resizableDiv" style={{ width: `${barDivwidth}px` }}></div>
             </div>

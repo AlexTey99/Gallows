@@ -1,4 +1,4 @@
-// src/component-API/Api-pokemon.jsx
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setLetterCounter, setFirstWordTitle } from "../Redux/actions";
@@ -12,6 +12,7 @@ const PokemonApi = () => {
             .then(res => res.json())
             .then(res => {
                 const titles = res.data[0].titles;
+                console.log(titles);
                 
                 // Obtener el índice actual de localStorage o inicializarlo en 0
                 let currentIndex = localStorage.getItem('currentIndex');
@@ -30,13 +31,17 @@ const PokemonApi = () => {
                 currentIndex = (currentIndex + 1) % titles.length;
                 localStorage.setItem('currentIndex', currentIndex);
 
-                // Procesar el título
-                const firstWordTitle = pokemonRandomTitle.trim().split(' ')[0];
-                const endResult = firstWordTitle.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""); // Convierte el string en minúscula y le quita los caracteres especiales
+                // Convierte el string en minúscula y le quita los caracteres especiales
+                const endResult = pokemonRandomTitle
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, "")
+                //.replace(/\s/g, "");
+ 
                 console.log(endResult);
 
                 dispatch(setFirstWordTitle(endResult));
-                dispatch(setLetterCounter(firstWordTitle.length));
+                dispatch(setLetterCounter(pokemonRandomTitle.length));
             })
             .catch(error => console.error('Error al realizar la solicitud', error));
     }, [dispatch]);

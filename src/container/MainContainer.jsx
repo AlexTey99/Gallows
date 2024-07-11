@@ -9,7 +9,7 @@ const MainContainer = () => {
 
     return (
         <div className="mainContainer">
-            <img src= {image}/>
+            <img src= {image} alt='img'/>
             <AllEncompassingContainer/>
         </div>
        
