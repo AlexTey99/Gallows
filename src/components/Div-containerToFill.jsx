@@ -7,6 +7,11 @@ const DivContainerToFill = ({ guessedLetters }) => {
     const firstWordTitle = useSelector((state) => state.counter.firstWordTitle);
     const dispatch = useDispatch();
 
+    const restartApp = () => {
+        window.location.reload();
+    };
+      
+
     function reducirDiv() {
         const miDiv = document.getElementById('resizableDiv');
         const nuevaAncho = miDiv.offsetWidth - 18;
@@ -68,6 +73,7 @@ const DivContainerToFill = ({ guessedLetters }) => {
                 new Promise((resolve) => {
                     setTimeout(() => {
                         resolve(alert('Lo has conseguido'));
+                        restartApp();
                     }, 1000);
                 });
             }

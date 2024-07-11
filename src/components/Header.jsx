@@ -6,9 +6,15 @@ import { FaHeart } from "react-icons/fa";
 const Header = () => {
     const barDivwidth = useSelector(state => state.counter.width);
 
+    const restartApp = () => {
+        window.location.reload();
+    };
+      
+
     setTimeout(()=>{
         if(barDivwidth === 0){
             alert('GAME OVER!')
+            restartApp();
         }
     },500)
     
