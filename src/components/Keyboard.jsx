@@ -27,9 +27,12 @@ const Keyboard = ({ onLetterClick, guessedLetters, firstWordTitle }) => {
     }, [onLetterClick, guessedLetters, firstWordTitle]);
 
     return (
-        <div className="keyboard">
-            {keyboard}
+        <div className="containerkeyboard">
+            <div className="keyboard">
+                {keyboard}
+            </div>
         </div>
+        
     );
 };
 
