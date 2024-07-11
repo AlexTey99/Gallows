@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from "react";
 
-const Keyboard = ({onLetterClick}) => {
+const Keyboard = ({ onLetterClick, guessedLetters, firstWordTitle }) => {
     const [keyboard, setKeyboard] = useState([]);
 
     useEffect(() => {
         const divsKeyboard = [];
         for (let i = 0; i <= 25; i++) {
             const letter = String.fromCharCode(97 + i);
-            divsKeyboard.push(<div className="keyboardDivs" onClick={()=> onLetterClick(letter)} key={i}>{letter}</div>);
+            const divId = `keyboardDiv_${letter}`; // Generar un id único para cada div
+            const isInWord = firstWordTitle.includes(letter);
+            const isGuessed = guessedLetters.includes(letter);
+            const isIncorrect = isGuessed && !isInWord;
+
+            divsKeyboard.push(
+                <div
+                    id={divId} // Asignar el id generado al div
+                    className={`keyboardDivs ${isIncorrect ? 'incorrectKey' : ''}`}
+                    onClick={() => onLetterClick(letter)}
+                    key={letter} // Usar la letra como key única
+                >
+                    {letter}
+                </div>
+            );
         }
         setKeyboard(divsKeyboard);
-    }, [onLetterClick]);
+    }, [onLetterClick, guessedLetters, firstWordTitle]);
 
     return (
         <div className="keyboard">
@@ -20,4 +34,8 @@ const Keyboard = ({onLetterClick}) => {
 };
 
 export { Keyboard };
+
+
+
+
 

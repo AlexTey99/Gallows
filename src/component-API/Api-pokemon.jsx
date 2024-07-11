@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setLetterCounter, setFirstWordTitle } from "../Redux/actions";
 
@@ -35,8 +35,6 @@ const PokemonApi = () => {
                 .toLowerCase()
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, "")
- 
-                console.log(endResult);
 
                 dispatch(setFirstWordTitle(endResult));
                 dispatch(setLetterCounter(pokemonRandomTitle.length));
