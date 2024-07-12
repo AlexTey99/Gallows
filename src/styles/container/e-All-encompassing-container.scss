@@ -37,13 +37,41 @@
                 margin: 2px;
                 cursor: pointer;
             }
+
+            @media screen and (max-width:375px){
+                .keyboardDivs{
+                    height: 34px;
+                    width: 40px;
+                }
+            }
+        }
+
+        @media screen and (max-width:375px){
+            .keyboard{
+                padding-left: 0px 0px 0px 0px;
+                margin-left: 0px;
+                width: 100%;
+                margin-bottom: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(46px, 2fr));
+            }
         }
     }
 
+        @media screen and (max-width: 375px){
+        .containerkeyboard{
+           height: auto;
+        }
+        }
     
 
     .incorrectKey {
        background: red !important;
     }
     
+}
+
+@media screen and (max-width: 375px){
+    .all-encompassing-container{
+        width: 360px;
+    }
 }

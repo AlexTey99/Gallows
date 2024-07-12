@@ -11,9 +11,15 @@
     opacity: 0.8;
     background: black;
 
+    @media screen and (max-width: 375px){
+        h1{
+            font-size: 14px;
+            margin-right: 2px;
+        }
+    }
+
     .FaHouseChimney{
         margin-right: 25px;
-        cursor: pointer;
     }
 
     .life-bar{
@@ -32,8 +38,13 @@
             border-radius: 5px;
             transition: width 0.5s, height 0.5s;
         }
+    }
 
-        
+    @media screen and (max-width: 375px){
+        .life-bar{
+            padding: 4px;
+            width: 94px;
+        }
     }
 
     .containerHearts{

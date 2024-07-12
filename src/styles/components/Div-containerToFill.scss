@@ -19,4 +19,19 @@
         opacity: 0.9;
         font-size: 20px;
     }
+
+    @media screen and (max-width: 375px){
+        .separateDivs{
+            height: 40px;
+            width: 40px;
+            padding: 8px 0px 0px 12px;
+        }
+    }
+}
+
+@media screen and (max-width: 375px){
+    .DivContainerToFill{
+       padding: 10px;
+       grid-template-columns: repeat(auto-fit, minmax(40px, 0fr));
+    }
 }
