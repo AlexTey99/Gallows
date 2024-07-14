@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { resizableDiv } from "../Redux/actions";
 
@@ -12,7 +12,8 @@ const DivContainerToFill = ({ guessedLetters }) => {
     };
       
 
-    function reducirDiv() {
+    const reducirDiv = useCallback(()=> {
+
         const miDiv = document.getElementById('resizableDiv');
         const nuevaAncho = miDiv.offsetWidth - 18;
 
@@ -20,7 +21,11 @@ const DivContainerToFill = ({ guessedLetters }) => {
         setTimeout(() => {
             dispatch(resizableDiv(nuevaAncho));
         }, 100);
-    }
+    },[])
+        
+
+       
+
 
     useEffect(() => {
         // Pintar los espacios de la palabra al iniciar el juego
@@ -63,7 +68,7 @@ const DivContainerToFill = ({ guessedLetters }) => {
     if (guessedLetters.length > 0 && !firstWordTitle.includes(guessedLetters[guessedLetters.length - 1])) {
       reducirDiv();
     }
-  }, [guessedLetters, firstWordTitle]);
+  }, [guessedLetters, firstWordTitle, reducirDiv]);
 
     useEffect(() => {
         // Comprobar si todas las letras han sido adivinadas, ignorando los espacios
