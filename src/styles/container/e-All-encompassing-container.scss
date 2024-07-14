@@ -48,10 +48,9 @@
 
         @media screen and (max-width:375px){
             .keyboard{
-                padding-left: 0px 0px 0px 0px;
                 margin-left: 0px;
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 60px;
                 grid-template-columns: repeat(auto-fit, minmax(46px, 2fr));
             }
         }
@@ -72,6 +71,7 @@
 
 @media screen and (max-width: 375px){
     .all-encompassing-container{
+        height: 98%;
         width: 360px;
     }
 }
