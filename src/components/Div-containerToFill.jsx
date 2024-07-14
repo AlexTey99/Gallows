@@ -39,30 +39,31 @@ const DivContainerToFill = ({ guessedLetters }) => {
         setDivs(newDivs);
     }, [firstWordTitle]);
 
-    useEffect(() => {
-        // Comprobar si la letra presionada se encuentra en la palabra
-        if (guessedLetters.length > 0) {
-            let newDivs = [];
-            for (let i = 0; i < firstWordTitle.length; i++) {
-                if (firstWordTitle[i] === ' ') {
-                    newDivs.push(
-                        <div className="spaceDiv" key={`${i}-space`} style={{ marginRight: '5px' }}>
-                        </div>
-                    );
-                } else {
-                    newDivs.push(
-                        <div className="separateDivs" key={i}>
-                            {guessedLetters.includes(firstWordTitle[i]) ? firstWordTitle[i] : ''}
-                        </div>
-                    );
-                }
-            }
-            setDivs(newDivs);
+   
+  useEffect(() => {
+    // Comprobar si la letra presionada se encuentra en la palabra
+    if (guessedLetters.length > 0) {
+      let newDivs = [];
+      for (let i = 0; i < firstWordTitle.length; i++) {
+        if (firstWordTitle[i] === ' ') {
+          newDivs.push(
+            <div className="spaceDiv" key={`${i}-space`} style={{ marginRight: '5px' }}>
+            </div>
+          );
+        } else {
+          newDivs.push(
+            <div className="separateDivs" key={i}>
+              {guessedLetters.includes(firstWordTitle[i]) ? firstWordTitle[i] : ''}
+            </div>
+          );
         }
-        if (guessedLetters.length > 0 && !firstWordTitle.includes(guessedLetters[guessedLetters.length - 1])) {
-            reducirDiv();
-        }
-    }, [guessedLetters, firstWordTitle]);
+      }
+      setDivs(newDivs);
+    }
+    if (guessedLetters.length > 0 && !firstWordTitle.includes(guessedLetters[guessedLetters.length - 1])) {
+      reducirDiv();
+    }
+  }, [guessedLetters, firstWordTitle]);
 
     useEffect(() => {
         // Comprobar si todas las letras han sido adivinadas, ignorando los espacios
