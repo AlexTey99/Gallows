@@ -21,11 +21,7 @@ const DivContainerToFill = ({ guessedLetters }) => {
         setTimeout(() => {
             dispatch(resizableDiv(nuevaAncho));
         }, 100);
-    },[])
-        
-
-       
-
+    },[dispatch])
 
     useEffect(() => {
         // Pintar los espacios de la palabra al iniciar el juego

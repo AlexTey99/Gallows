@@ -8,7 +8,6 @@ import { useSelector} from "react-redux";
 const AllEncompassingContainer = () => {
     const [guessedLetters, setGuessedLetters] = useState([]);
     const firstWordTitle = useSelector((state) => state.counter.firstWordTitle);
-    console.log(firstWordTitle);
 
     const handleLetterClick = (letter) => {
         setGuessedLetters([...guessedLetters, letter]);
